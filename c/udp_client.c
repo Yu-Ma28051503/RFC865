@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
                 printHelp(argv[0]);
                 return ret;
             case 'd':
-                rfc865Discription(0);
+                rfc865Description(0);
                 return ret;
             case '?':
             default:

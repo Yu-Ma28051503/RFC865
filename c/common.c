@@ -29,7 +29,7 @@ const char *getRandomQuote(void)
     return QUOTES[rand() % QUOTE_COUNT];
 }
 
-void rfc865Discription(int isTcp)
+void rfc865Description(int isTcp)
 {
     const char description[] = 
         "RFC865: Quote of the Day Protocol\n"

@@ -20,7 +20,6 @@ static int udpServer(void)
 {
     int ret = SUCCESS;
     int sockfd = 0;
-    int connfd = 0;
     struct sockaddr_in server_addr, client_addr;
     socklen_t client_addr_len;
     char buffer[BUFFER_SIZE];
@@ -41,7 +40,7 @@ static int udpServer(void)
 
     /* Create socket */
     if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
-        fprintf(stderr, "Socket creation failed");
+        fprintf(stderr, "Socket creation failed\n");
         ret = ERROR;
     }
     else {
@@ -54,7 +53,7 @@ static int udpServer(void)
     /* Bind socket */
     if (ret == SUCCESS) {
         if (bind(sockfd, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
-            fprintf(stderr, "Bind failed");
+            fprintf(stderr, "Bind failed\n");
             ret = ERROR;
         }
     }
@@ -69,7 +68,7 @@ static int udpServer(void)
             memset(buffer, 0, sizeof(buffer));
             len = recvfrom(sockfd, buffer, sizeof(buffer) - 1, 0, (struct sockaddr *)&client_addr, &client_addr_len);
             if (len < 0) {
-                fprintf(stderr, "Receive failed");
+                fprintf(stderr, "Receive failed\n");
                 ret = ERROR;
                 continue;
             }
@@ -97,15 +96,15 @@ static int udpServer(void)
             memset(buffer, 0, sizeof(buffer));
             len = snprintf(buffer, sizeof(buffer), "Quote of the Day: %s\n%s\n", timebuf, quote);
             if (len < 0 || len >= (int)sizeof(buffer)) {
-                fprintf(stderr, "Quote formatting failed");
+                fprintf(stderr, "Quote formatting failed\n");
                 ret = ERROR;
                 continue;
             }
 
             /* Send quote */
-            sent_len = sendto(sockfd, buffer, sizeof(buffer), 0, (struct sockaddr *)&client_addr, client_addr_len);
+            sent_len = sendto(sockfd, buffer, len, 0, (struct sockaddr *)&client_addr, client_addr_len);
             if (sent_len < 0) {
-                fprintf(stderr, "Send to server failed");
+                fprintf(stderr, "Send to client failed\n");
                 ret = ERROR;
             }
             else {
@@ -113,17 +112,11 @@ static int udpServer(void)
                 printf("Quote delivered to user=%s quote_id=%u bytes=%zd\n",
                             inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port), sent_len);
             }
-
-            close(connfd);
         }
     }
 
     if (sockfd >= 0) {
         close(sockfd);
-    }
-
-    if (connfd >= 0) {
-        close(connfd);
     }
 
     return ret;
@@ -146,7 +139,7 @@ int main(int argc, char *argv[])
                 printHelp(argv[0]);
                 return ret;
             case 'd':
-                rfc865Discription(0);
+                rfc865Description(0);
                 return ret;
             case '?':
             default:

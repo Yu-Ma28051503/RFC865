@@ -1,6 +1,6 @@
 # RFC865
 
-This repository contains a simple implementation of the Daytime Protocol as defined in [RFC 865](https://datatracker.ietf.org/doc/html/rfc865) using variety of programming languages. The Daytime Protocol is a simple protocol that provides the current date and time to clients over TCP or UDP.
+This repository contains a simple implementation of the Quote of the Day Protocol as defined in [RFC 865](https://datatracker.ietf.org/doc/html/rfc865) using variety of programming languages. The Quote of the Day Protocol is a simple protocol that provides the current date and time to clients over TCP or UDP.
 
 ## C Implementation
 The C implementation includes both a TCP server and a TCP client. The server listens for incoming connections on port 13 and sends the current date and time to the connected client. The client connects to the server and displays the received date and time.
@@ -38,7 +38,7 @@ make
 ./tcp_client
 ```
 
-3. **Run the UDP Server and Clinet**:
+3. **Run the UDP Server and Client**:
 
 ```bash
 ./udp_server
