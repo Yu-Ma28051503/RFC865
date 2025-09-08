@@ -139,5 +139,5 @@ make clean
 ### Notes
 
 - The tcp_client connects to `127.0.0.1` by default.
-    - To connect to a different server, provide the server IP as edited SERVER_IPv4 in `common.hpp`.
-- The C++ implementation **DO NOT** use modern C++ features and the C++ Standard Library
+    - To connect to a different server, provide the server IP as edited SERVER_IP in `common.hpp`.
+- The C++ implementation **DOES NOT** use modern C++ features and the C++ Standard Library

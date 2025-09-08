@@ -110,7 +110,7 @@ static int tcpServer(void)
             }
 
             /* Send quote */
-            sent_len = send(connfd, buffer, sizeof(buffer), 0);
+            sent_len = send(connfd, buffer, len, 0);
             if (sent_len < 0) {
                 std::cerr << "Send failed" << std::endl;
                 ret = ERROR;
