@@ -141,3 +141,53 @@ make clean
 - The tcp_client connects to `127.0.0.1` by default.
     - To connect to a different server, provide the server IP as edited SERVER_IP in `common.hpp`.
 - The C++ implementation **DOES NOT** use modern C++ features and the C++ Standard Library
+
+## Python Implementation
+The Python implementation includes both a TCP server and a TCP client. The server listens for incoming connections on port 17 and sends the Quote of the Day to the connected client. The client connects to the server and displays the received quote.
+
+### Files
+
+```
+|-- tcp_server.py  # TCP server implementation
+|-- tcp_client.py  # TCP client implementation
+|-- udp_server.py  # UDP server implementation
+|-- udp_client.py  # UDP client implementation
+```
+
+### Usage
+
+0. **Prerequisites**
+
+    - Ensure you have Python 3 installed on your system.
+
+```bash
+# Debian/Ubuntu
+sudo apt update
+sudo apt install python3
+```
+
+1. **Run the TCP Server and Client**
+
+    - The TCP Server requires superuser privileges to bind to port 17.
+
+```bash
+sudo python3 tcp_server.py
+```
+
+```bash
+# ready in another terminal
+python3 tcp_client.py
+```
+
+2. **Run the UDP Server and Client**
+
+    - The UDP Server requires superuser privileges to bind to port 17.
+
+```bash
+sudo python3 udp_server.py
+```
+
+```bash
+# ready in another terminal
+python3 udp_client.py
+```
