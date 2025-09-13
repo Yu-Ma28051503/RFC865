@@ -23,7 +23,7 @@ class TCPServer:
         self.sock = None
         self.is_running = True
         self.today = datetime.date.today()
-        self.quote = random.choice(self.quotes)
+        self.quote = None
 
     def start(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -43,7 +43,7 @@ class TCPServer:
 
     def handle_client(self, conn, addr):
         today = datetime.date.today()
-        if today != self.today:
+        if today != self.today or self.quote is None:
             self.today = today
             self.quote = random.choice(self.quotes)
             print(f"Date changed to {self.today}, refreshing quotes if needed.")
