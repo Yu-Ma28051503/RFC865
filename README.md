@@ -245,7 +245,7 @@ java udp_client
     - https://docs.oracle.com/javase/jp/8/docs/api/java/net/package-summary.html
 
 ## JavaScript Implementation (Node.js)
-The JavaScript implementation includes both a TCP server and a TCP client using Node.js. The server listens for incoming connections on port 17 and sends the Quote of the Day to the connected client. The client connects to the server and displays the received quote.
+The JavaScript implementation includes both TCP and UDP servers and clients using Node.js. The servers listen for incoming connections on port 17 and send the Quote of the Day to the connected clients. The clients connect to the servers and display the received quote.
 
 ### Files
 
@@ -292,3 +292,4 @@ node udp_client.js
     - https://nodejs.org/ja/download
 - Node.js network library document
     - https://nodejs.org/api/net.html
+    - https://nodejs.org/api/dgram.html

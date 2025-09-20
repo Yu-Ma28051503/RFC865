@@ -1,7 +1,7 @@
 const dgram = require('dgram');
 
 /* Quote processing */
-quoteList = [
+const quoteList = [
     "The only way to do great work is to love what you do. - Steve Jobs",
     "Life is what happens when you're busy making other plans. - John Lennon",
     "The purpose of our lives is to be happy. - Dalai Lama",
@@ -26,7 +26,7 @@ function getDailyQuote() {
     const today =  todayKey();
 
     if (today !== lastDate) {
-        lastDateKey = todayKeyStr;
+        lastDate = today;
         currentQuote = getQuote();
     }
 
@@ -42,7 +42,7 @@ server.on('listening', () => {
 });
 
 server.on('message', (msg, rinfo) => {
-    quote = getDailyQuote();
+    const quote = getDailyQuote();
 
     console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
     server.send(quote, rinfo.port, rinfo.address, (err) => {

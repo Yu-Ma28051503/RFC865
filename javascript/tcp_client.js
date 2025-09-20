@@ -13,3 +13,8 @@ client.on('data', (data) => {
 client.on('close', () => {
     console.log('Connection closed');
 });
+
+client.on('error', (err) => {
+    console.error(err);
+    client.destroy();
+});

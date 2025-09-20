@@ -1,7 +1,7 @@
 const net = require('net');
 
 /* Quote processing */
-quoteList = [
+const quoteList = [
     "The only way to do great work is to love what you do. - Steve Jobs",
     "Life is what happens when you're busy making other plans. - John Lennon",
     "The purpose of our lives is to be happy. - Dalai Lama",
@@ -26,7 +26,7 @@ function getDailyQuote() {
     const today =  todayKey();
 
     if (today !== lastDate) {
-        lastDateKey = todayKeyStr;
+        lastDate = today;
         currentQuote = getQuote();
     }
 
@@ -50,5 +50,6 @@ server.listen(17, '127.0.0.1', () => {
 });
 
 server.on('error', (err) => {
-    throw err;
+    console.error(err);
+    server.close();
 });
