@@ -216,23 +216,26 @@ Ensure you have Java Development Kit (JDK) installed on your system by following
 1. **Run the TCP Server and Client**:
 
 ```bash
-cd java/tcp
-sudo java tcp_server.java
+cd java/udp
+javac tcp_server.java
+sudo java tcp_server
 
 # ready in another terminal
-java tcp_client.java
+javac tcp_client.java
+java tcp_client
 ```
 
 2. **Run the UDP Server and Client**:
 
 ```bash
 cd java/udp
-sudo java udp_server.java
+javac udp_server.java
+sudo java udp_server
 
 # ready in another terminal
-java udp_client.java
+javac udp_client.java
+java udp_client
 ```
-
 
 ### Notes
 

@@ -36,8 +36,12 @@ public class tcp_client {
             e.printStackTrace();
         } finally {
             /* 接続を遮断する */
-            socket.close();
-            in.close();
+            if (socket != null) {
+                socket.close();
+            }
+            if (in != null) {
+                in.close();
+            }
         }
     }
 }

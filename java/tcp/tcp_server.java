@@ -60,8 +60,12 @@ public class tcp_server {
                 } catch (IOException e) {
                     e.printStackTrace();
                 } finally {
-                    out.close();
-                    socket.close();
+                    if (out != null) {
+                        out.close();
+                    }
+                    if (socket != null && !socket.isClosed()) {
+                        socket.close();
+                    }
                 }
             }
         } catch (IOException e) {

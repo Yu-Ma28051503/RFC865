@@ -1,3 +1,6 @@
+# Ignore presentaion file (pptx)
+.pptx
+
 # Ignore all files in the c directory except .c, .h, and Makefile
 c/*
 !c/*.c

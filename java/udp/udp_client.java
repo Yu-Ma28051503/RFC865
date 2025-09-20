@@ -35,7 +35,9 @@ public class udp_client {
             e.printStackTrace();
         } finally {
             /* 接続を遮断する */
-            socket.close();
+            if (socket != null) {
+                socket.close();
+            }
         }
     }
 }
