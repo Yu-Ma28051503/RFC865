@@ -1,6 +1,6 @@
 # RFC865
 
-This repository contains a simple implementation of the Quote of the Day Protocol as defined in [RFC 865](https://datatracker.ietf.org/doc/html/rfc865) using variety of programming languages. The Quote of the Day Protocol is a simple protocol that provides the current date and time to clients over TCP or UDP.
+This repository contains a simple implementation of the Quote of the Day Protocol as defined in [RFC 865](https://datatracker.ietf.org/doc/html/rfc865) using variety of programming languages. The Quote of the Day Protocol is a simple protocol that provides the Todays Quote to clients over TCP or UDP.
 
 ## C Implementation
 The C implementation includes both a TCP server and a TCP client. The server listens for incoming connections on port 13 and sends the current date and time to the connected client. The client connects to the server and displays the received date and time.
@@ -191,3 +191,55 @@ sudo python3 udp_server.py
 # ready in another terminal
 python3 udp_client.py
 ```
+
+## Java Implementation
+The Java implementation includes both a TCP server and a TCP client. The server listens for incoming connections on port 17 and sends the Quote of the Day to the connected client. The client connects to the server and displays the received quote.
+
+### Files
+
+```
+java/
+|-- tcp/
+|   |-- tcp_server.java  # TCP server implementation
+|   |-- tcp_client.java  # TCP client implementation
+|-- udp/
+    |-- udp_server.java  # UDP server implementation
+    |-- udp_client.java  # UDP client implementation
+```
+
+### Usage
+
+0. **Prerequisites**:
+
+Ensure you have Java Development Kit (JDK) installed on your system by following the [download site](https://www.java.com/ja/download/help/download_options.html)
+
+1. **Run the TCP Server and Client**:
+
+```bash
+cd java/udp
+javac tcp_server.java
+sudo java tcp_server
+
+# ready in another terminal
+javac tcp_client.java
+java tcp_client
+```
+
+2. **Run the UDP Server and Client**:
+
+```bash
+cd java/udp
+javac udp_server.java
+sudo java udp_server
+
+# ready in another terminal
+javac udp_client.java
+java udp_client
+```
+
+### Notes
+
+- Java Download Site
+    - https://www.java.com/ja/download/help/download_options.html
+- Java network library document
+    - https://docs.oracle.com/javase/jp/8/docs/api/java/net/package-summary.html
