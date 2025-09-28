@@ -293,3 +293,60 @@ node udp_client.js
 - Node.js network library document
     - https://nodejs.org/api/net.html
     - https://nodejs.org/api/dgram.html
+
+## Go Implementation
+The Go implementation includes both a TCP server and a TCP client. The server listens for incoming connections on port 17 and sends the Quote of the Day to the connected client. The client connects to the server and displays the received quote.
+
+### Files
+
+```go/
+|-- go.mod          # Go module file
+|-- go.sum          # Go checksum file
+|-- bin/            # Compiled binaries (after build)
+|-- cmd/
+    |-- tcpserver/
+    |   |-- tcp_server.go  # TCP server implementation
+    |-- tcpclient/
+    |   |-- tcp_client.go  # TCP client implementation
+    |-- udpserver/
+    |   |-- udp_server.go  # UDP server implementation
+    |-- udpclient/
+        |-- udp_client.go  # UDP client implementation
+```
+
+### Usage
+
+0. **Install Go**:
+- Ensure you have Go installed on your system by following the [download site](https://go.dev/doc/install).
+
+1. **Build the Server and Client**:
+
+```bash
+cd go
+mkdir -p bin
+go build -o bin ./cmd/...
+```
+
+2. **Run the TCP Server and Client**:
+
+```bash
+cd bin
+./tcpserver
+```
+
+```bash
+# ready in another terminal
+./tcpclient
+```
+
+3. **Run the UDP Server and Client**:
+
+```bash
+cd bin
+./udpserver
+```
+
+```bash
+# ready in another terminal
+./udpclient
+```
