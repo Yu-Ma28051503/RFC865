@@ -12,3 +12,8 @@ c++/*
 !c++/*.cpp
 !c++/*.hpp
 !c++/Makefile
+
+# Ignore all files in the go directory except .go and go/build
+go/*
+!go/cmd/
+!go/
