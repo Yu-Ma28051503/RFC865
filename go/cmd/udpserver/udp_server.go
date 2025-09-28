@@ -42,7 +42,7 @@ func runUDPServer() error {
 
 	day := getDay()
 
-	fmt.Println("Starting UDP Client")
+	fmt.Println("Starting UDP Server")
 
 	s, err := net.ListenPacket("udp", ":17")
 	if err != nil {
@@ -59,19 +59,19 @@ func runUDPServer() error {
 			continue
 		}
 
-		go func(a net.Addr, data []byte) {
-			now := getDay()
-			if now != day {
-				day = now
-				newQuote, err := getQuote()
-				if err != nil {
-					fmt.Println("Error getting quote:", err)
-					return
-				}
-				quote = newQuote
-				fmt.Println("Today's quote:", quote)
+		now := getDay()
+		if now != day {
+			day = now
+			newQuote, err := getQuote()
+			if err != nil {
+				fmt.Println("Error getting quote:", err)
+				continue
 			}
+			quote = newQuote
+			fmt.Println("Today's quote:", quote)
+		}
 
+		go func(a net.Addr, data []byte) {
 			_, err = s.WriteTo([]byte(quote+"\n"), a)
 			if err != nil {
 				fmt.Println("Error writing:", err)

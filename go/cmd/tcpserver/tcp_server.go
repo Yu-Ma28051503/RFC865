@@ -37,12 +37,12 @@ func runTCPServer() error {
 	quote, err := getQuote()
 	if err != nil {
 		fmt.Println("Error getting quote:", err)
-		os.Exit(1)
+		return err
 	}
 	fmt.Println("Today's quote:", quote)
 
 	day := getDay()
-	
+
 	fmt.Println("Starting TCP Server")
 
 	s, err := net.Listen("tcp", ":17")
@@ -59,19 +59,19 @@ func runTCPServer() error {
 			continue
 		}
 
+		now := getDay()
+		if now != day {
+			day = now
+			quote, err = getQuote()
+			if err != nil {
+				fmt.Println("Error getting quote:", err)
+				continue
+			}
+		}
+
 		go func(c net.Conn) {
 			defer c.Close()
 
-			now := getDay()
-			if now != day {
-				day = now
-				quote, err = getQuote()
-				if err != nil {
-					fmt.Println("Error getting quote:", err)
-					return
-				}
-			}
-			
 			_, err = c.Write([]byte(quote + "\n"))
 			if err != nil {
 				fmt.Println("Error writing to connection:", err)
